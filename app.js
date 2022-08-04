@@ -1,4 +1,3 @@
-const path = require('path');
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -7,13 +6,14 @@ const  graphqlSchema = require('./graphql/schema');
 const  graphqlResolver = require('./graphql/resolvers');
 
 const MONGODB_URI =
-'mongodb+srv://root:root@cluster0.ps3p8.mongodb.net/test?retryWrites=true&w=majority';
+'mongodb+srv://root:root@cluster0.ps3p8.mongodb.net/GraphQl?retryWrites=true&w=majority';
 
 const app = express();
 
 app.use('/graphql',graphqlHTTP({
   schema: graphqlSchema,
-  rootValue: graphqlResolver
+  rootValue: graphqlResolver,
+  graphiql:true,
 
 }));
 mongoose
